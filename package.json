@@ -1,0 +1,22 @@
+{
+  "name": "todowrite-manager",
+  "version": "0.1.0",
+  "description": "Programmatic todo list management",
+  "main": "index.ts",
+  "type": "module",
+  "bin": {
+    "todowrite": "index.ts"
+  },
+  "scripts": {
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}
