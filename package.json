@@ -1,5 +1,5 @@
 {
-  "name": "todowrite-manager",
+  "name": "todowrite",
   "version": "0.1.0",
   "description": "Programmatic todo list management",
   "main": "index.ts",

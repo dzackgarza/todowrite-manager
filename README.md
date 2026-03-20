@@ -1,15 +1,22 @@
-# todowrite-manager
+# todowrite
 
-To install dependencies:
+Standalone Python CLI for hierarchical todo-tree storage and mutation.
 
-```bash
-bun install
-```
-
-To run:
+## Install
 
 ```bash
-bun run index.ts
+uv sync --dev
 ```
 
-This project was created using `bun init` in bun v1.3.10. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## Check
+
+```bash
+just check
+```
+
+## Run
+
+```bash
+uv run todowrite todo-read SESSION_ID
+uv run todowrite todo-plan SESSION_ID --todos @plan.json
+```
