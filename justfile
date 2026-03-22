@@ -1,18 +1,44 @@
 set fallback := true
+repo_root := justfile_directory()
+python_qc_justfile := "/home/dzack/ai/quality-control/justfile"
+
+default:
+    @just test
 
 install:
-    uv sync --dev
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{repo_root}}"
+    exec uv sync --dev
 
-lint:
-    .venv/bin/python -m ruff check .
+[private]
+_format:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{repo_root}}"
+    exec uv run ruff format .
 
-format:
-    .venv/bin/python -m ruff format .
+[private]
+_lint:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{repo_root}}"
+    exec uv run ruff check .
 
-typecheck:
-    .venv/bin/python -m basedpyright
+[private]
+_typecheck:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{repo_root}}"
+    exec uv run basedpyright
 
-test:
-    .venv/bin/python -m pytest
+[private]
+_quality-control:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{repo_root}}"
+    exec uv run pytest tests
 
-check: lint typecheck test
+test: _lint _typecheck _quality-control
+
+check: test
